@@ -24,7 +24,7 @@
                 <a href="#features">Features</a>
                 <a href="#why-choose-us">Why Choose Us</a>
                 <a href="#case-studies">Case Studies</a>
-                <a href="#faq-section">FAQs</a>
+                <a href="#faq">FAQs</a>
                 <div class="dropdown">
                     <a href="javascript:void(0)" class="dropbtn">Explore More ▾</a>
                     <div class="dropdown-content">
@@ -233,7 +233,7 @@
    
    
    
-    <section class="faq-section">
+    <section class="faq-section" id="faq">
         <h2 class="faq-title">Frequently Asked Questions</h2>
 
         <div class="faq-container">
@@ -311,6 +311,8 @@
         </div>
     </section>
 
+   
+   
     <!-- faq javascript -->
     <script>document.addEventListener("DOMContentLoaded", function () {
             initFAQ();
@@ -346,6 +348,25 @@
 
             });
 
+
+
+            // Scroll animation
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+            setTimeout(() => {
+                entry.target.classList.add("show");
+            }, index * 150); // stagger effect
+        }
+    });
+}, {
+    threshold: 0.2
+});
+
+document.querySelectorAll(".faq-item").forEach(item => {
+    observer.observe(item);
+});
+
         }</script>
 
 
@@ -373,59 +394,20 @@
         </div>
 
     </section>
+    <script>
+    const ctaSection = document.querySelector('.cta-section');
 
+const observer1 = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.animationPlayState = 'running';
+    }
+  });
+});
 
+observer1.observe(ctaSection);</script>
 
-
-
-
-
-
-
-
-
-
-
-
-    <section id="footer">
-        <div id="footer"></div>
-    </section>
-    <script src="js/include.js"></script>
-
-
-
-    <button id="scrollTopBtn" type="button">
-        <i class="fa-solid fa-chevron-up"></i>
-    </button>
-    <!-- scroll button javascript -->
-      <script>
-
-        const scrollBtn = document.getElementById("scrollTopBtn");
-
-        window.addEventListener("scroll", function () {
-
-            if (window.scrollY > 200) {
-                scrollBtn.style.display = "flex";
-            } else {
-                scrollBtn.style.display = "none";
-            }
-
-        });
-
-        scrollBtn.addEventListener("click", function () {
-
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
-
-        });
-
-    </script>
-
-
-
-    <div id="demo-modal" class="modal">
+  <div id="demo-modal" class="modal">
     <div class="modal-content contact-form-card">
 
         <span class="close-btn">&times;</span>
@@ -592,6 +574,57 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+    <section id="footer">
+        <div id="footer"></div>
+    </section>
+    <script src="js/include.js"></script>
+
+
+
+    <button id="scrollTopBtn" type="button">
+        <i class="fa-solid fa-chevron-up"></i>
+    </button>
+    <!-- scroll button javascript -->
+      <script>
+
+        const scrollBtn = document.getElementById("scrollTopBtn");
+
+        window.addEventListener("scroll", function () {
+
+            if (window.scrollY > 200) {
+                scrollBtn.style.display = "flex";
+            } else {
+                scrollBtn.style.display = "none";
+            }
+
+        });
+
+        scrollBtn.addEventListener("click", function () {
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        });
+
+    </script>
+
+
+
+  
 
 
 

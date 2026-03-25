@@ -5,47 +5,42 @@ fetch("feature.html")
         document.getElementById("features-section").innerHTML = data;
 
         startCountersObserver();
-        initBrochureFormPopup();   // updated function
+        initBrochureFormPopup();
         initRevealAnimation();
-        revealOnScroll()
+        revealOnScroll();
+        initIndustryAnimation();   // ✅ ADD THIS
     });
 
+
+// ================= POPUP =================
 function initBrochureFormPopup() {
 
-    // Elements
     const popup = document.getElementById("formPopup");
     const openBtn = document.getElementById("openFormBtn");
     const closeBtn = document.getElementById("closeForm");
     const form = document.getElementById("brochureForm");
 
-    // Safety check (important when using fetch)
     if (!popup || !openBtn || !closeBtn || !form) return;
 
-    // File path from form
     const fileURL = form.getAttribute("data-file");
 
-    // Open form popup
     openBtn.addEventListener("click", function () {
         popup.classList.add("active");
     });
 
-    // Close form
     closeBtn.addEventListener("click", function () {
         popup.classList.remove("active");
     });
 
-    // Close on outside click
     popup.addEventListener("click", function (e) {
         if (e.target === popup) {
             popup.classList.remove("active");
         }
     });
 
-    // Submit → Download
     form.addEventListener("submit", function (e) {
         e.preventDefault();
 
-        // Download file
         const link = document.createElement("a");
         link.href = fileURL;
         link.download = "KompassHR-Brochure.pdf";
@@ -53,7 +48,6 @@ function initBrochureFormPopup() {
         link.click();
         document.body.removeChild(link);
 
-        // Success feedback
         alert("Brochure downloaded successfully!");
 
         popup.classList.remove("active");
@@ -62,14 +56,13 @@ function initBrochureFormPopup() {
 }
 
 
-
-// ===== SCROLL REVEAL ANIMATION =====
+// ================= REVEAL ANIMATION =================
 function initRevealAnimation(){
   const observer = new IntersectionObserver((entries)=>{
     entries.forEach((entry)=>{
       if(entry.isIntersecting){
         entry.target.classList.add("active");
-        observer.unobserve(entry.target); // animate once
+        observer.unobserve(entry.target);
       }
     });
   },{ threshold: 0.15 });
@@ -79,6 +72,8 @@ function initRevealAnimation(){
   });
 }
 
+
+// ================= STAGGER SCROLL =================
 function revealOnScroll() {
     const reveals = document.querySelectorAll(".reveal");
 
@@ -89,13 +84,36 @@ function revealOnScroll() {
         if (elementTop < windowHeight - 100) {
             setTimeout(() => {
                 el.classList.add("active");
-            }, index * 100); // stagger effect
+            }, index * 100);
         }
     });
 }
 
 window.addEventListener("scroll", revealOnScroll);
 
+
+
+// ================= INDUSTRY ROW ANIMATION (NEW) =================
+function initIndustryAnimation(){
+
+    const rows = document.querySelectorAll('.industry-row');
+
+    if(rows.length === 0) return; // safety
+
+    const observer = new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{
+            if(entry.isIntersecting){
+                entry.target.style.animationPlayState = 'running';
+                observer.unobserve(entry.target); // run only once
+            }
+        });
+    },{ threshold:0.2 });
+
+    rows.forEach(row=>{
+        row.style.animationPlayState = 'paused'; // start paused
+        observer.observe(row);
+    });
+}
 
 
 
