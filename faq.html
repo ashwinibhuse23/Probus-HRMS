@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ Section</title>
+    <link rel="stylesheet" href="css/faq.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <section class="faq-section">
+        <h2 class="faq-title">Frequently Asked Questions</h2>
+
+        <div class="faq-container">
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>What makes KompassHR different from other HRMS?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        KompassHR is an AI-powered HRMS platform offering end-to-end workforce management, one-click
+                        payroll with 100% accuracy, inbuilt PMS, learning modules, and a 100% compliant system.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>Is KompassHR suitable for SMEs and large enterprises?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        Yes. KompassHR is designed to scale with organizations of every size. From SMEs to large
+                        enterprises, our platform is trusted by clients across Maharashtra (Pune, Mumbai, Nashik,
+                        Aurangabad), Gujarat (Ahmedabad, Surat), Karnataka (Bangalore), and other regions in India, as
+                        well as global markets.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item active">
+                <button class="faq-question">
+                    <span>Can KompassHR handle compliance and payroll across India?</span>
+                    <span class="faq-icon">×</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        Yes, KompassHR ensures compliance across all Indian states,
+                        including Maharashtra, Gujarat, and Karnataka. Our HRMS is
+                        designed to support organizations with operations across
+                        multiple states and global branches.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>Does it support multi-location organizations?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        Absolutely. KompassHR is designed for multi-location workforce management. Whether your teams
+                        are spread across India (Pune, Mumbai, Gujarat, Bangalore, and more) or global offices, our HRMS
+                        ensures seamless operations and compliance.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>How secure is employee data on KompassHR?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        With 256-bit SSL encryption, AWS/Azure hosting, and disaster recovery systems, your data is safe
+                        and compliant – whether your workforce is in India or global offices.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+
+
+    <section class="cta-section">
+
+        <div class="cta-container">
+
+            <div class="cta-content">
+                <h2>See Why 250+ Organizations Trust KompassHR</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+
+                <button class="btn btn-pink" id="openDemo2">Book a Demo</button>
+
+
+            </div>
+
+            <div id="demoModal2" class="modal">
+                <div class="modal-content">
+                    <span class="close-btn2">&times;</span>
+                    <h2>Request a Personalized HRMS Demo</h2>
+
+                    <form id="demoForm2">
+                        <div class="input-group">
+                            <input type="text" id="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="input-group">
+                            <input type="email" id="email" placeholder="your@email.com" required>
+                        </div>
+                        <div class="input-group">
+                            <input type="tel" id="phone" placeholder="Enter phone number" pattern="[0-9]{10}"
+                                title="Please enter a 10-digit phone number" required>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" id="role" placeholder="Your Role" required>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" id="company" placeholder="Enter company name" required>
+                        </div>
+                        <div class="input-group">
+                            <select id="companySize" required>
+                                <option value="" disabled selected>Company Size</option>
+                                <option value="1-50">1-50 employees</option>
+                                <option value="51-200">51-200 employees</option>
+                                <option value="201+">201+ employees</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="submit-btn">Request a Demo</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="cta-image">
+                <img src="images/women-cta-4-e1763468407274.webp" alt="KompassHR">
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- DEMO MODAL -->
+
+
+
+
+    <!-- 
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const openBtn = document.getElementById("openDemo2");
+            const modal = document.getElementById("demoModal2");
+            const closeBtn = document.getElementById("closeDemo2");
+
+            openBtn.addEventListener("click", function () {
+                modal.style.display = "flex";
+                console.log("clicked")
+            });
+
+            closeBtn.addEventListener("click", function () {
+                modal.style.display = "none";
+            });
+
+            window.addEventListener("click", function (e) {
+                if (e.target === modal) {
+                    modal.style.display = "none";
+                }
+            });
+
+        });
+    </script> -->
+
+    <script>
+    
+    document.addEventListener('DOMContentLoaded', function () {
+            const modal = document.getElementById("demoModal2");
+            const btn = document.querySelector(".btn-pink"); // Your Book a Demo button
+            const closeBtn = document.querySelector(".close-btn2");
+            const form = document.getElementById("demoForm2");
+
+            // Open Modal
+            btn.onclick = function () {
+                modal.style.display = "block";
+                console.log("Hello");
+            }
+
+            // Close Modal when clicking (x)
+            closeBtn.onclick = function () {
+                modal.style.display = "none";
+            }
+
+            // Close Modal when clicking outside the box
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+
+            // Form Validation & Submission
+            form.onsubmit = function (e) {
+                e.preventDefault();
+
+                // Basic check
+                const phone = document.getElementById('phone').value;
+                if (phone.length < 10) {
+                    alert("Krupaya valid mobile number taka.");
+                    return;
+                }
+
+                alert("Thank you! ");
+                form.reset();
+                modal.style.display = "none";
+            }
+        });</script>
+
+
+</body>
+
+</html>

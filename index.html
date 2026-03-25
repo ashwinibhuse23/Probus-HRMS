@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Probus HRMS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/Navbar.css">
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <header class="navbar">
+        <div class="container nav-wrapper">
+            <div class="logo">
+                <img src="images/logo.webp" alt="PROBUS">
+            </div>
+
+            <nav class="nav-menu">
+                <a href="index.html" class="active">Home</a>
+                <a href="#features">Features</a>
+                <a href="#why-choose-us">Why Choose Us</a>
+                <a href="#case-studies">Case Studies</a>
+                <a href="#faq-section">FAQs</a>
+                <div class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Explore More ▾</a>
+                    <div class="dropdown-content">
+                        <a href="https://probus.in/" target="_blank">Probus Software</a>
+                        <a href="https://probusstudio.com/" target="_blank">Probus Studio</a>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="nav-buttons">
+                <button class="btn btn-pink open-demo">Book a Demo</button>
+
+
+
+                <a href="https://kompasshr.com/" target="_blank" class="btn btn-purple">Login</a>
+            </div>
+        </div>
+    </header>
+
+
+
+
+
+
+
+
+
+    <!-- hero section  -->
+
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-content"
+              data-aos="fade-right"
+             data-aos-delay="500">
+                <h1 data-aos="fade-right" data-aos-delay="200">A Complete AI-Powered HRMS Software to Empower Your Workforce</h1>
+                <p data-aos="fade-right" data-aos-delay="300">Simplify workforce management, streamline payroll, and empower employees with an AI-driven HRMS
+                    trusted by 250+ organizations across India and globally.</p>
+            </div>
+
+            <div class="contact-form-card"
+             data-aos="fade-left"
+             data-aos-delay="600">
+                <h2 data-aos="fade-left" data-aos-delay="300">Request a Personalized HRMS Demo</h2>
+
+                <form id="heroDemoForm" novalidate>
+
+                    <div class="form-row">
+                        <div class="form-group"data-aos="fade-left" data-aos-delay="300">
+                            <label>Company Name*</label>
+                            <input type="text" id="company">
+                            <small class="error"></small>
+                        </div>
+
+                        <div class="form-group"data-aos="fade-left" data-aos-delay="400">
+                            <label>Name*</label>
+                            <input type="text" id="name">
+                            <small class="error"></small>
+                        </div>
+                    </div>
+
+                    <div class="form-row"data-aos="fade-left" data-aos-delay="450">
+                        <div class="form-group">
+                            <label>Role*</label>
+                            <input type="text" id="role">
+                            <small class="error"></small>
+                        </div>
+
+                        <div class="form-group"data-aos="fade-left" data-aos-delay="500">
+                            <label>Email*</label>
+                            <input type="email" id="email">
+                            <small class="error"></small>
+                        </div>
+                    </div>
+
+                    <div class="form-row"data-aos="fade-left" data-aos-delay="550">
+                        <div class="form-group">
+                            <label>Mobile*</label>
+                            <input type="text" id="phone">
+                            <small class="error"></small>
+                        </div>
+
+                        <div class="form-group"data-aos="fade-left" data-aos-delay="600">
+                            <label>Company Size*</label>
+                            <select id="companySize">
+                                <option value=""></option>
+                                <option>1–10 employees</option>
+                                <option>11–50 employees</option>
+                                <option>51–200 employees</option>
+                                <option>200–500 employees</option>
+                                <option>500+ employees</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- ✅ Message Field -->
+                    <div class="form-group full-width"data-aos="fade-left" data-aos-delay="650">
+                        <label>Message*</label>
+                        <textarea id="message" rows="3"></textarea>
+                        <small class="error"></small>
+                    </div>
+
+                    <button type="submit" class="submit-btn" data-aos="zoom-in"
+                        data-aos-delay="700">SUBMIT →</button>
+
+                    <div id="formError"></div>
+
+                </form>
+            </div>
+        </div>
+    </section>
+<!-- hero section javascript -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const form = document.getElementById("heroDemoForm");
+
+            form.addEventListener("submit", function (e) {
+
+                e.preventDefault();
+
+                let hasError = false;
+
+                const fields = form.querySelectorAll("input, select, textarea");
+
+                fields.forEach((field) => {
+
+                    const error = field.parentElement.querySelector(".error");
+
+                    if (!error) return; // 🔥 prevent JS crash
+
+                    error.textContent = "";
+                    field.classList.remove("input-error");
+
+                    if (field.value.trim() === "") {
+                        error.textContent = "This field is required";
+                        field.classList.add("input-error");
+                        hasError = true;
+                    }
+
+                    if (field.type === "email" && field.value.trim() !== "") {
+                        const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+                        if (!field.value.match(emailPattern)) {
+                            error.textContent = "Enter valid email";
+                            hasError = true;
+                        }
+                    }
+
+                    if (field.id === "phone" && field.value.trim() !== "") {
+                        const phonePattern = /^[0-9]{10}$/;
+                        if (!field.value.match(phonePattern)) {
+                            error.textContent = "Enter valid 10-digit number";
+                            hasError = true;
+                        }
+                    }
+
+                });
+
+                const formError = document.getElementById("formError");
+
+                if (hasError) {
+                    formError.style.display = "block";
+                    formError.textContent = "Please fill all required fields correctly.";
+                } else {
+                    formError.style.display = "none";
+
+                    alert("Form submitted successfully!");
+                    form.reset();
+                }
+
+            });
+
+        });
+    </script>
+
+
+   
+
+
+
+
+
+
+
+
+<section id="features">
+        <div id="features-section"></div>
+    </section>
+
+
+
+
+    <section id="why-choose-us">
+        <div id="kompass-section"></div>
+    </section>
+
+
+   
+   
+    <section id="case-studies">
+        <div id="case-section"></div>
+    </section>
+
+    
+
+   
+   
+   
+   
+    <section class="faq-section">
+        <h2 class="faq-title">Frequently Asked Questions</h2>
+
+        <div class="faq-container">
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>What makes KompassHR different from other HRMS?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        KompassHR is an AI-powered HRMS platform offering end-to-end workforce management, one-click
+                        payroll with 100% accuracy, inbuilt PMS, learning modules, and a 100% compliant system.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>Is KompassHR suitable for SMEs and large enterprises?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        Yes. KompassHR is designed to scale with organizations of every size. From SMEs to large
+                        enterprises, our platform is trusted by clients across Maharashtra (Pune, Mumbai, Nashik,
+                        Aurangabad), Gujarat (Ahmedabad, Surat), Karnataka (Bangalore), and other regions in India, as
+                        well as global markets.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item active">
+                <button class="faq-question">
+                    <span>Can KompassHR handle compliance and payroll across India?</span>
+                    <span class="faq-icon">×</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        Yes, KompassHR ensures compliance across all Indian states,
+                        including Maharashtra, Gujarat, and Karnataka. Our HRMS is
+                        designed to support organizations with operations across
+                        multiple states and global branches.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>Does it support multi-location organizations?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        Absolutely. KompassHR is designed for multi-location workforce management. Whether your teams
+                        are spread across India (Pune, Mumbai, Gujarat, Bangalore, and more) or global offices, our HRMS
+                        ensures seamless operations and compliance.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>How secure is employee data on KompassHR?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        With 256-bit SSL encryption, AWS/Azure hosting, and disaster recovery systems, your data is safe
+                        and compliant – whether your workforce is in India or global offices.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- faq javascript -->
+    <script>document.addEventListener("DOMContentLoaded", function () {
+            initFAQ();
+        });
+
+        function initFAQ() {
+
+            const faqItems = document.querySelectorAll(".faq-item");
+
+            faqItems.forEach(item => {
+
+                const btn = item.querySelector(".faq-question");
+                const answer = item.querySelector(".faq-answer");
+                const icon = item.querySelector(".faq-icon");
+
+                btn.addEventListener("click", () => {
+
+                    const isActive = item.classList.contains("active");
+
+                    faqItems.forEach(i => {
+                        i.classList.remove("active");
+                        i.querySelector(".faq-answer").style.maxHeight = null;
+                        i.querySelector(".faq-icon").textContent = "+";
+                    });
+
+                    if (!isActive) {
+                        item.classList.add("active");
+                        answer.style.maxHeight = answer.scrollHeight + "px";
+                        icon.textContent = "×";
+                    }
+
+                });
+
+            });
+
+        }</script>
+
+
+
+
+    <section class="cta-section">
+
+        <div class="cta-container">
+
+            <div class="cta-content">
+                <h2>See Why 250+ Organizations Trust KompassHR</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+
+                <button class="btn btn-pink open-demo">Book a Demo</button>
+
+
+            </div>
+
+
+
+            <div class="cta-image">
+                <img src="images/women-cta-4-e1763468407274.webp" alt="KompassHR">
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section id="footer">
+        <div id="footer"></div>
+    </section>
+    <script src="js/include.js"></script>
+
+
+
+    <button id="scrollTopBtn" type="button">
+        <i class="fa-solid fa-chevron-up"></i>
+    </button>
+    <!-- scroll button javascript -->
+      <script>
+
+        const scrollBtn = document.getElementById("scrollTopBtn");
+
+        window.addEventListener("scroll", function () {
+
+            if (window.scrollY > 200) {
+                scrollBtn.style.display = "flex";
+            } else {
+                scrollBtn.style.display = "none";
+            }
+
+        });
+
+        scrollBtn.addEventListener("click", function () {
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        });
+
+    </script>
+
+
+
+    <div id="demo-modal" class="modal">
+    <div class="modal-content contact-form-card">
+
+        <span class="close-btn">&times;</span>
+
+        <h2>Request a Personalized HRMS Demo</h2>
+
+        <form id="demoForm" novalidate>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Company Name*</label>
+                    <input type="text" id="demoCompany">
+                    <small class="error"></small>
+                </div>
+
+                <div class="form-group">
+                    <label>Name*</label>
+                    <input type="text" id="demoName">
+                    <small class="error"></small>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Role*</label>
+                    <input type="text" id="demoRole">
+                    <small class="error"></small>
+                </div>
+
+                <div class="form-group">
+                    <label>Email*</label>
+                    <input type="email" id="demoEmail">
+                    <small class="error"></small>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Mobile*</label>
+                    <input type="text" id="demoPhone">
+                    <small class="error"></small>
+                </div>
+
+                <div class="form-group">
+                    <label>Company Size*</label>
+                    <select id="demoCompanySize">
+                        <option value=""></option>
+                        <option>1–10 employees</option>
+                        <option>11–50 employees</option>
+                        <option>51–200 employees</option>
+                        <option>200–500 employees</option>
+                        <option>500+ employees</option>
+                    </select>
+                    <small class="error"></small>
+                </div>
+            </div>
+
+            <div class="form-group full-width">
+                <label>Message*</label>
+                <textarea id="demoMessage"></textarea>
+                <small class="error"></small>
+            </div>
+
+            <button type="submit" class="submit-btn">SUBMIT →</button>
+
+            <div id="demoFormError"></div>
+
+        </form>
+    </div>
+</div>
+
+  <script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const modal = document.getElementById("demo-modal");
+    const openBtns = document.querySelectorAll(".open-demo");
+    const closeBtn = document.querySelector(".close-btn");
+    const form = document.getElementById("demoForm");
+
+    // Open modal
+    openBtns.forEach(btn => {
+        btn.addEventListener("click", function () {
+            modal.style.display = "flex";
+        });
+    });
+
+    // Close modal
+    closeBtn.addEventListener("click", function () {
+        modal.style.display = "none";
+    });
+
+    // Close outside click
+    window.addEventListener("click", function (e) {
+        if (e.target === modal) {
+            modal.style.display = "none";
+        }
+    });
+
+    // ✅ FORM VALIDATION
+    form.addEventListener("submit", function (e) {
+
+        e.preventDefault();
+
+        let hasError = false;
+
+        const fields = form.querySelectorAll("input, select, textarea");
+
+        fields.forEach((field) => {
+
+            const error = field.parentElement.querySelector(".error");
+
+            if (!error) return;
+
+            // Reset
+            error.textContent = "";
+            field.classList.remove("input-error");
+
+            // Required check
+            if (field.value.trim() === "") {
+                error.textContent = "This field is required";
+                field.classList.add("input-error");
+                hasError = true;
+                return;
+            }
+
+            // Email validation
+            if (field.type === "email") {
+                const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+                if (!field.value.match(emailPattern)) {
+                    error.textContent = "Enter valid email";
+                    field.classList.add("input-error");
+                    hasError = true;
+                }
+            }
+
+            // Phone validation
+            if (field.id === "demoPhone") {
+                const phonePattern = /^[0-9]{10}$/;
+                if (!field.value.match(phonePattern)) {
+                    error.textContent = "Enter valid 10-digit number";
+                    field.classList.add("input-error");
+                    hasError = true;
+                }
+            }
+
+        });
+
+        const formError = document.getElementById("demoFormError");
+
+        if (hasError) {
+            formError.style.display = "block";
+            formError.textContent = "Please fill all required fields correctly.";
+        } else {
+            formError.style.display = "none";
+
+            // ✅ Success
+            alert("Demo request submitted successfully!");
+
+            form.reset();
+            modal.style.display = "none";
+        }
+
+    });
+
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<!-- counter javascript -->
+    <script>
+
+        function startCounters() {
+
+            const counters = document.querySelectorAll('.counter');
+
+            counters.forEach(counter => {
+
+                const target = +counter.getAttribute('data-target');
+
+                let count = 0;
+
+                const speed = target / 120;
+
+                function updateCounter() {
+
+                    count += speed;
+
+                    if (count < target) {
+
+                        counter.innerText = Math.ceil(count).toLocaleString();
+
+                        requestAnimationFrame(updateCounter);
+
+                    } else {
+
+                        counter.innerText = target.toLocaleString() + "+";
+
+                    }
+
+                }
+
+                updateCounter();
+
+            });
+
+        }
+
+
+
+        function startCountersObserver() {
+
+            const statsSection = document.querySelector(".stats");
+
+            if (!statsSection) return;
+
+            const observer = new IntersectionObserver(entries => {
+
+                entries.forEach(entry => {
+
+                    if (entry.isIntersecting) {
+
+                        startCounters();
+
+                        observer.disconnect();
+
+                    }
+
+                });
+
+            });
+
+            observer.observe(statsSection);
+
+        }
+
+    </script>
+
+
+
+
+
+
+
+<!-- case card javascript  -->
+    <script>
+        const cards = document.querySelectorAll(".case-card");
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                }
+
+            });
+        });
+
+        cards.forEach(card => {
+
+            card.style.opacity = "0";
+            card.style.transform = "translateY(40px)";
+            card.style.transition = "0.6s ease";
+
+            observer.observe(card);
+
+        });
+    </script>
+
+
+
+
+
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<script>
+  AOS.init({
+    duration: 1200,     // animation speed
+    easing: 'ease-in-out',
+    once: true          // run only once
+  });
+</script>
+
+</body>
+
+</html>
