@@ -58,6 +58,7 @@ font-size:16px;
 font-weight:500;
 transition:.3s;
 position:relative;
+
 }
 
 /* Hover underline animation */
@@ -71,6 +72,7 @@ background:#9333ea;
 left:0;
 bottom:-3px;
 transition:.3s;
+
 }
 
 .footer-col ul li a:hover{

@@ -4,10 +4,13 @@
   font-family: 'Inter', sans-serif;
 }
 
+
 .container{
-  width:1200px;
+  max-width:1200px;
+  width:90%;
   margin:auto;
 }
+
 
 .section-title{
   text-align:center;
@@ -16,6 +19,7 @@
   color:#1d2671;
 }
 
+
 .tabs{
   display:flex;
   justify-content:center;
@@ -23,6 +27,8 @@
   flex-wrap:wrap;
   margin-bottom:45px;
 }
+
+
 
 .tab{
   padding:18px 32px;
@@ -35,6 +41,7 @@
   font-weight:500;
   transition: all 0.3s ease;
 }
+
 
 
 .tab:hover{
@@ -208,20 +215,124 @@
 
 
 
-.tabs .tab {
-  opacity: 0;
-  transform: translateY(40px) scale(0.95);
-  transition: all 0.6s ease;
+/* ================= RESPONSIVE ================= */
+
+/* Tablet */
+@media (max-width: 1024px) {
+
+  .container{
+    width: 90%;
+  }
+
+  .content-wrapper{
+    gap: 30px;
+  }
+
+  .content-card{
+    width: 50%;
+    padding: 25px;
+  }
+
+  .device-images{
+    width: 50%;
+  }
+
+  .section-title{
+    font-size: 28px;
+  }
+
+  .tab{
+    padding: 14px 22px;
+    font-size: 14px;
+  }
 }
 
-.tabs.show .tab {
-  opacity: 1;
-  transform: translateY(0) scale(1);
+
+/* Mobile */
+@media (max-width: 768px) {
+
+  .kompass-section{
+    padding: 60px 0;
+  }
+
+  .container{
+    width: 92%;
+  }
+
+  .section-title{
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .tabs{
+    gap: 10px;
+  }
+
+  .tab{
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+
+  /* STACK LAYOUT */
+  .content-wrapper{
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .content-card{
+    width: 100%;
+    padding: 20px;
+  }
+
+  .device-images{
+    width: 100%;
+    text-align: center;
+  }
+
+  .device-images img{
+    max-width: 100%;
+    height: auto;
+  }
+
 }
 
-/* stagger effect for tabs */
-.tabs.show .tab:nth-child(1) { transition-delay: 0.1s; }
-.tabs.show .tab:nth-child(2) { transition-delay: 0.2s; }
-.tabs.show .tab:nth-child(3) { transition-delay: 0.3s; }
-.tabs.show .tab:nth-child(4) { transition-delay: 0.4s; }
-.tabs.show .tab:nth-child(5) { transition-delay: 0.5s; }
+
+/* Small Mobile */
+@media (max-width: 480px) {
+
+  .section-title{
+    font-size: 20px;
+  }
+
+  .tab{
+    font-size: 12px;
+    padding: 8px 12px;
+  }
+
+  .content-card h3{
+    font-size: 18px;
+  }
+
+  .content-card p{
+    font-size: 14px;
+  }
+
+  .content-card ul li{
+    font-size: 13px;
+  }
+
+}
+
+
+
+@media (max-width: 768px) {
+  .tabs{
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 10px;
+  }
+
+  .tabs::-webkit-scrollbar{
+    display: none;
+  }
+}
