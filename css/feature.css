@@ -443,6 +443,10 @@ transform:scale(1.08);
     }
 }
 
+
+.rows{
+    align-items: center;
+}
 /* RESPONSIVE */
 @media(max-width:768px){
 
