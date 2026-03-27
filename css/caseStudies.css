@@ -115,6 +115,9 @@
 
 
 }
+.justify{
+    text-align: justify;
+}
 
 /* TAG */
 
@@ -129,6 +132,29 @@
     border-radius: 20px;
     font-weight: 500;
 }
+
+/* ===== REVEAL BASE ===== */
+.reveal {
+    opacity: 0;
+    transition: all 1.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+/* ===== DIRECTIONS ===== */
+.reveal-left { transform: translateX(-160px); }
+.reveal-top { transform: translateY(-160px); }
+.reveal-bottom { transform: translateY(160px); }
+.reveal-right { transform: translateX(160px); }
+
+
+
+.reveal.active {
+    opacity: 1;
+    transform: translate(0,0);
+}
+
+
+
 
 /* RESPONSIVE */
 
@@ -485,7 +511,7 @@ position:relative;
 
 
 /* Smooth fade + slide */
-.reveal {
+/* .reveal {
     opacity: 0;
     transform: translateY(60px) scale(0.96);
     transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
@@ -497,7 +523,7 @@ position:relative;
 }
 
 /* Stagger effect */
-.reveal.delay-1 { transition-delay: 0.1s; }
+/* .reveal.delay-1 { transition-delay: 0.1s; }
 .reveal.delay-2 { transition-delay: 0.2s; }
 .reveal.delay-3 { transition-delay: 0.3s; }
-.reveal.delay-4 { transition-delay: 0.4s; }
+.reveal.delay-4 { transition-delay: 0.4s; }  */

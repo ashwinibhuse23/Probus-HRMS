@@ -217,11 +217,12 @@ fetch("why-choose-us.html")
         slides.forEach(slide => slide.classList.remove("active"));
         dots.forEach(dot => dot.classList.remove("active"));
 
-        slides[i].classList.add("active");
-        dots[i].classList.add("active");
+        if(slides[i] && dots[i]){
+            slides[i].classList.add("active");
+            dots[i].classList.add("active");
+        }
     }
 
-    // Dot click
     dots.forEach((dot, i) => {
         dot.addEventListener("click", () => {
             index = i;
@@ -229,7 +230,6 @@ fetch("why-choose-us.html")
         });
     });
 
-    // Auto slider
     setInterval(() => {
         index++;
         if(index >= slides.length){
@@ -240,32 +240,45 @@ fetch("why-choose-us.html")
 
 
     /* ================================
-       SCROLL REVEAL ANIMATION
+       FIXED REVEAL ANIMATION
     ================================= */
 
-    const reveals = document.querySelectorAll(".reveal");
+    function initReveal() {
+        const reveals = document.querySelectorAll(".reveal");
 
-    function revealOnScroll() {
-        const triggerBottom = window.innerHeight * 0.85;
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
 
-        reveals.forEach(el => {
-            const top = el.getBoundingClientRect().top;
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("active");
+                    observer.unobserve(entry.target);
+                }
 
-            if (top < triggerBottom) {
-                el.classList.add("active");
-            }
+            });
+        }, {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
         });
+
+        reveals.forEach(el => observer.observe(el));
+
+        /* 🔥 IMPORTANT: fallback (instant visible if already in viewport) */
+        setTimeout(() => {
+            reveals.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight) {
+                    el.classList.add("active");
+                }
+            });
+        }, 200);
     }
 
-    // Run on scroll
-    window.addEventListener("scroll", revealOnScroll);
-
-    // Run once after load
-    revealOnScroll();
+    // ⏱️ Delay to ensure DOM fully rendered
+    setTimeout(() => {
+        initReveal();
+    }, 100);
 
 });
-
-
 
 
 fetch("footer.html")

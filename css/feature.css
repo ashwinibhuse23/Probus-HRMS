@@ -131,7 +131,7 @@
     border-radius: 16px;
     animation: floatImage 4s ease-in-out infinite;
     box-shadow: 0 20px 40px rgba(106, 44, 255, 0.25);
-}
+}  
 
 @keyframes floatImage {
     0% {
